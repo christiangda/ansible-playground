@@ -64,6 +64,9 @@ Vagrant.configure("2") do |config|
                 `vagrant ssh ubuntu1804 -c "hostname -I"`.split()[1]
             end
         end
+
+        # Necessary for ansible
+        ubuntu1804.vm.provision "shell", inline: "sudo apt-get -y install python"
     end
 
 end

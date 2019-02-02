@@ -99,13 +99,36 @@ pip install autopep8
 pip install ansible
 ```
 
-Start up Vms
+Start up the virtual machines (it take long time ;), go for a coffee cup)
 
 ```bash
 vagrant up
 ```
 
-Test ansible is working
+Test if ansible is working fine
 ```bash
-ansible all -m ping
+ansible all -m ping -o
+```
+
+More ad-hoc commands
+
+```bash
+ansible all -m setup -a 'filter=ansible_distribution' -o
+ansible all -m setup -a 'filter=ansible_os_family' -o
+ansible all -m setup -a 'filter=ansible_distribution_version' -o
+ansible all -m setup -a 'filter=ansible_distribution_major_version' -o
+```
+
+## Stop Playing
+
+If you want to stop vagrant Virtual machines
+
+```bash
+vagrant halt
+```
+
+If you want to stop vagrant Virtual machines
+
+```bash
+vagrant destroy -f
 ```
