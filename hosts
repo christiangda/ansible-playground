@@ -4,6 +4,7 @@ centos7
 
 [ubuntu]
 ubuntu1804
+ubuntu1810
 
 [linux:children]
 centos

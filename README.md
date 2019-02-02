@@ -4,6 +4,12 @@
 
 This playground use [Virtualbox](https://www.virtualbox.org/) and [Vagrant](https://www.vagrantup.com) to provision virtual machines where to play
 
+This environment create four VMs,
+* One Centos 6
+* One Centos 7
+* One Ubuntu 18.04
+* One Ubuntu 18.10
+
 ## My environment
 
 I'm using Linux [Fedora 29 Workstation](https://getfedora.org/workstation) with the latest updates
@@ -99,6 +105,10 @@ pip install autopep8
 pip install ansible
 ```
 
+Activate Python virtualenv
+```bash
+source venv/bin/activate
+```
 Start up the virtual machines (it take long time ;), go for a coffee cup)
 
 ```bash
@@ -120,6 +130,12 @@ ansible all -m setup -a 'filter=ansible_distribution_major_version' -o
 ```
 
 ## Stop Playing
+
+Deactivate virtual env
+
+```bash
+deactivate
+```
 
 If you want to stop vagrant Virtual machines
 

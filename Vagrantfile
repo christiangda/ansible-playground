@@ -20,11 +20,11 @@ Vagrant.configure("2") do |config|
         centos6.vm.network "public_network", auto_config: true
         centos6.vm.provider "virtualbox" do |v|
             v.name = "centos6"
-            v.memory = "1024"
+            v.memory = "512"
             v.cpus = 1
         end
        centos6.hostmanager.ip_resolver = proc do |vm, resolving_vm|
-            if hostname = (centos6.vm.ssh_info && centos6.vm.ssh_info[:host])
+            if hostname = (vm.ssh_info && vm.ssh_info[:host])
                 `vagrant ssh centos6 -c "hostname -I"`.split()[1]
             end
         end
@@ -38,11 +38,11 @@ Vagrant.configure("2") do |config|
         centos7.vm.network "public_network", auto_config: true
         centos7.vm.provider "virtualbox" do |v|
             v.name = "centos7"
-            v.memory = "1024"
+            v.memory = "512"
             v.cpus = 1
         end
         centos7.hostmanager.ip_resolver = proc do |vm, resolving_vm|
-            if hostname = (centos7.vm.ssh_info && centos7.vm.ssh_info[:host])
+            if hostname = (vm.ssh_info && vm.ssh_info[:host])
                 `vagrant ssh centos7 -c "hostname -I"`.split()[1]
             end
         end
@@ -56,17 +56,38 @@ Vagrant.configure("2") do |config|
         ubuntu1804.vm.network "public_network", auto_config: true
         ubuntu1804.vm.provider "virtualbox" do |v|
             v.name = "ubuntu1804"
-            v.memory = "1024"
+            v.memory = "512"
             v.cpus = 1
         end
         ubuntu1804.hostmanager.ip_resolver = proc do |vm, resolving_vm|
-            if hostname = (ubuntu1804.vm.ssh_info && ubuntu1804.vm.ssh_info[:host])
+            if hostname = (vm.ssh_info && vm.ssh_info[:host])
                 `vagrant ssh ubuntu1804 -c "hostname -I"`.split()[1]
             end
         end
 
         # Necessary for ansible
         ubuntu1804.vm.provision "shell", inline: "sudo apt-get -y install python"
+    end
+
+    # Ubuntu 18.10 (Cosmic)
+    config.vm.define "ubuntu1810" do |ubuntu1810|
+        ubuntu1810.vm.box = "ubuntu/cosmic64"
+        ubuntu1810.vm.box_check_update = true
+        ubuntu1810.vm.hostname = "ubuntu1810"
+        ubuntu1810.vm.network "public_network", auto_config: true
+        ubuntu1810.vm.provider "virtualbox" do |v|
+            v.name = "ubuntu1810"
+            v.memory = "512"
+            v.cpus = 1
+        end
+        ubuntu1810.hostmanager.ip_resolver = proc do |vm, resolving_vm|
+            if hostname = (vm.ssh_info && vm.ssh_info[:host])
+                `vagrant ssh ubuntu1810 -c "hostname -I"`.split()[1]
+            end
+        end
+
+        # Necessary for ansible
+        ubuntu1810.vm.provision "shell", inline: "sudo apt-get -y install python"
     end
 
 end
