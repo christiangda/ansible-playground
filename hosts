@@ -1,0 +1,10 @@
+[centos]
+centos6
+centos7
+
+[ubuntu]
+ubuntu1804
+
+[linux:children]
+centos
+ubuntu
