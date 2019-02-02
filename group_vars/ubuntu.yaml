@@ -1,3 +1,2 @@
 ---
 ansible_ssh_user: vagrant
-become_user: vagrant
