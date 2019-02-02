@@ -1,0 +1,11 @@
+---
+- hosts: linux
+  become: true
+  become_user: root
+
+  tasks:
+    - name: Configure MOTD
+      copy:
+        content: >
+          This server was provisioned using ansible-playground from https://github.com/christiangda/ansible-playground
+        dest: /etc/motd

@@ -109,7 +109,10 @@ Activate Python virtualenv
 ```bash
 source venv/bin/activate
 ```
-Start up the virtual machines (it take long time ;), go for a coffee cup)
+
+Start up the virtual machines (it take a long time ;), go for a coffee cup) and when you go back
+your console maybe is asking for the network interface you want to use as a
+bridge for ansible machines
 
 ```bash
 vagrant up
@@ -127,6 +130,23 @@ ansible all -m setup -a 'filter=ansible_distribution' -o
 ansible all -m setup -a 'filter=ansible_os_family' -o
 ansible all -m setup -a 'filter=ansible_distribution_version' -o
 ansible all -m setup -a 'filter=ansible_distribution_major_version' -o
+```
+
+Testing the first-playbook.yaml
+
+```bash
+ansible-playbook first-playbook.yaml
+```
+
+Log-in servers:
+```bash
+vagrant ssh centos6
+# or
+vagrant ssh centos7
+# or
+vagrant ssh ubuntu1804
+# or
+vagrant ssh ubuntu1810
 ```
 
 ## Stop Playing

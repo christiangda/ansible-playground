@@ -108,3 +108,6 @@ venv.bak/
 
 # Logs Files
 *.log
+
+# Ansible retry file
+*.retry

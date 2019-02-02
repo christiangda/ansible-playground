@@ -28,6 +28,9 @@ Vagrant.configure("2") do |config|
                 `vagrant ssh centos6 -c "hostname -I"`.split()[1]
             end
         end
+
+        # Necessary for ansible
+        centos6.vm.provision "shell", inline: "sudo yum install -y libselinux-python"
     end
 
     # Centos 7 vm
