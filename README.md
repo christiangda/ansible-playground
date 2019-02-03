@@ -22,6 +22,8 @@ two Network Interfaces:
 Of course, feel free to used it and adapted it to your personal project!, Let me know if you have
 improvements using Pull Request or creating a new Issue
 
+![](./images/ansible-playground.png =250x)
+
 ## My environment
 
 I'm using Linux [Fedora 29 Workstation](https://getfedora.org/workstation) with the latest updates
