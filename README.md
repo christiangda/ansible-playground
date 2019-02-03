@@ -173,7 +173,7 @@ if you want to use filter
 ansible-playbook first-playbook.yaml --limit centos7,ubuntu1804
 ```
 
-Log-in servers:
+Connect to your servers:
 
 ```bash
 vagrant ssh centos6
@@ -193,7 +193,7 @@ Deactivate virtual env
 deactivate
 ```
 
-If you want to stop vagrant Virtual machines
+Stop (in vagrant halt) vagrant Virtual machines
 
 ```bash
 vagrant halt
