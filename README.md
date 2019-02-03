@@ -105,7 +105,7 @@ git clone https://github.com/christiangda/ansible-playground.git
 cd ansible-playground/
 ```
 
-The better way to "isolate the blast radius --> ;)" is using Python Virtual Environments, so, create it
+The better way to **" isolate the blast radius " -> ;)** is using Python Virtual Environments, so create it
 
 ```bash
 python3 -m venv venv
@@ -123,7 +123,7 @@ Activate Python virtualenv
 source venv/bin/activate
 ```
 
-As I mentioned before you have 4 VMs to play for (centos6, centos7, ubuntu1804, ubuntu1810), so,
+As I mentioned before you have five VMs to play for (centos6, centos7, ubuntu1804, ubuntu1810 and amzn2), so
 you can startup altogether or only one, two or three if you prefer
 
 If you want to startup only one
@@ -147,6 +147,7 @@ vagrant up centos6 centos7 ubuntu1804 ubuntu1810 amzn2
 ```
 
 Test if ansible is working fine
+
 ```bash
 ansible all -m ping -o
 ```
@@ -166,7 +167,14 @@ Testing the first-playbook.yaml
 ansible-playbook first-playbook.yaml
 ```
 
+if you want to use filter
+
+```bash
+ansible-playbook first-playbook.yaml --limit centos7,ubuntu1804
+```
+
 Log-in servers:
+
 ```bash
 vagrant ssh centos6
 # or
@@ -196,3 +204,13 @@ If you want to stop and destroy vagrant Virtual machines
 ```bash
 vagrant destroy -f
 ```
+
+# License
+
+This repository code is released under the GNU General Public License Version 3:
+
+* [http://www.gnu.org/licenses/gpl-3.0-standalone.html](http://www.gnu.org/licenses/gpl-3.0-standalone.html)
+
+# Author Information
+
+* [Christian González](https://github.com/christiangda)
