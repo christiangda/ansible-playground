@@ -148,6 +148,12 @@ Test if ansible is working fine
 ansible all -m ping -o
 ```
 
+get hostname of every server
+
+```bash
+ansible all -m command -a 'hostname -s' -o
+```
+
 More ad-hoc commands
 
 ```bash
