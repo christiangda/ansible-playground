@@ -2,12 +2,13 @@
 
 [Ansible](https://www.ansible.com/) playground to enjoy learning Ansible in a multi Operating System environment.
 
-This playground use [Virtualbox](https://www.virtualbox.org/) and [Vagrant](https://www.vagrantup.com) to provision virtual machines where to play
+This playground use [Virtualbox](https://www.virtualbox.org/) and [Vagrant](https://www.vagrantup.com) to provision virtual machines
+to have where to play
 
 This environment create five VMs (see [Vagrantfile](Vagrantfile)):
 
 * One Centos 6 (hostname centos6)
-* One Centos 7 (hostname centos7) **-->default when vagrant up**
+* One Centos 7 (hostname centos7) **--> default when execute vagrant up**
 * One Ubuntu 18.04 (hostname ubuntu1804)
 * One Ubuntu 18.10 (hostname ubuntu1810)
 * One Amazon Linux 2 LTS (hostname amzn2)
@@ -18,8 +19,8 @@ two Network Interfaces:
 * One in "nat" mode for internal Vagrant-VirtualBox communication (when you execute vagrant ssh "hostname")
 * One in "bridge" mode to your favorite "Host Interface" (This is asked you when VM startup) and where [Ansible](https://www.ansible.com/) could work using ssh protocol
 
-Of course fell free to used it and adapted it to you personal project!,  Let me know if you have improvements
-using Pull Request or creating a new Issue
+Of course, feel free to used it and adapted it to your personal project!, Let me know if you have
+improvements using Pull Request or creating a new Issue
 
 ## My environment
 
@@ -65,8 +66,7 @@ code --install-extension ms-python.python
 
 ### Install VirtualBox
 
-I recommend the following link for this work [Virtualbox - fedora]
-(https://www.if-not-true-then-false.com/2010/install-virtualbox-with-yum-on-fedora-centos-red-hat-rhel/)
+I recommend the following link for this work [Virtualbox - fedora](https://www.if-not-true-then-false.com/2010/install-virtualbox-with-yum-on-fedora-centos-red-hat-rhel/)
 
 ```bash
 sudo wget http://download.virtualbox.org/virtualbox/rpm/fedora/virtualbox.repo -O /etc/yum.repos.d/virtualbox.repo
@@ -87,7 +87,7 @@ sudo dnf install -y https://releases.hashicorp.com/vagrant/2.2.3/vagrant_2.2.3_x
 
 #### Vagrant plugins
 
-Install [vagrant-hostmanager plugin](https://github.com/devopsgroup-io/vagrant-hostmanager)
+Install [vagrant-hostmanager](https://github.com/devopsgroup-io/vagrant-hostmanager)
 
 ```bash
 vagrant plugin install vagrant-hostmanager
@@ -95,7 +95,7 @@ vagrant plugin install vagrant-hostmanager
 
 ## Start playing
 
-First of all clone this repository from github
+First of all clone this repository from [https://github.com/christiangda/ansible-playground](https://github.com/christiangda/ansible-playground)
 
 ```bash
 cd ~
