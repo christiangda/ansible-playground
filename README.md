@@ -22,7 +22,7 @@ two Network Interfaces:
 Of course, feel free to used it and adapted it to your personal project!, Let me know if you have
 improvements using Pull Request or creating a new Issue
 
-![](images/ansible-playground.png){ width=40% }
+![](images/ansible-playground.png)
 
 ## My environment
 
