@@ -1,14 +1,25 @@
 # ansible-playground
 
-[Ansible](https://www.ansible.com/) playground to enjoy learning ansible in a multi Operating System environment
+[Ansible](https://www.ansible.com/) playground to enjoy learning Ansible in a multi Operating System environment.
 
 This playground use [Virtualbox](https://www.virtualbox.org/) and [Vagrant](https://www.vagrantup.com) to provision virtual machines where to play
 
-This environment create four VMs,
-* One Centos 6
-* One Centos 7
-* One Ubuntu 18.04
-* One Ubuntu 18.10
+This environment create five VMs (see [Vagrantfile](Vagrantfile)):
+
+* One Centos 6 (hostname centos6)
+* One Centos 7 (hostname centos7) **-->default when vagrant up**
+* One Ubuntu 18.04 (hostname ubuntu1804)
+* One Ubuntu 18.10 (hostname ubuntu1810)
+* One Amazon Linux 2 LTS (hostname amzn2)
+
+All the five VMs could be used together at the same time or in any combination, each one of this has
+two Network Interfaces:
+
+* One in "nat" mode for internal Vagrant-VirtualBox communication (when you execute vagrant ssh "hostname")
+* One in "bridge" mode to your favorite "Host Interface" (This is asked you when VM startup) and where [Ansible](https://www.ansible.com/) could work using ssh protocol
+
+Of course fell free to used it and adapted it to you personal project!,  Let me know if you have improvements
+using Pull Request or creating a new Issue
 
 ## My environment
 
@@ -17,13 +28,13 @@ I'm using Linux [Fedora 29 Workstation](https://getfedora.org/workstation) with 
 ## Install Requirements
 
 Requirements to start play are:
+
 * [git](https://git-scm.com/)
 * [Visual Studio Code](https://code.visualstudio.com/)
 * [VirtualBox](https://www.virtualbox.org/)
 * [Vagrant](https://www.vagrantup.com)
 * [Python3](https://www.python.org)
 * [Ansible](https://www.ansible.com/)
-
 
 ### Install git
 
@@ -76,7 +87,8 @@ sudo dnf install -y https://releases.hashicorp.com/vagrant/2.2.3/vagrant_2.2.3_x
 
 #### Vagrant plugins
 
-Install [vagrant-hostmanager](https://github.com/devopsgroup-io/vagrant-hostmanager)
+Install [vagrant-hostmanager plugin](https://github.com/devopsgroup-io/vagrant-hostmanager)
+
 ```bash
 vagrant plugin install vagrant-hostmanager
 ```
@@ -106,16 +118,32 @@ pip install ansible
 ```
 
 Activate Python virtualenv
+
 ```bash
 source venv/bin/activate
 ```
 
-Start up the virtual machines (it take a long time ;), go for a coffee cup) and when you go back
+As I mentioned before you have 4 VMs to play for (centos6, centos7, ubuntu1804, ubuntu1810), so,
+you can startup altogether or only one, two or three if you prefer
+
+If you want to startup only one
+
+```bash
+vagrant up ubuntu1804
+```
+
+If you want to play with two, one Ubuntu, one Centos
+
+```bash
+vagrant up ubuntu1810 centos7
+```
+
+To startup the five together, one by one (it take a long time ;), go for a coffee cup) and when you go back
 your console maybe is asking for the network interface you want to use as a
 bridge for ansible machines
 
 ```bash
-vagrant up
+vagrant up centos6 centos7 ubuntu1804 ubuntu1810 amzn2
 ```
 
 Test if ansible is working fine
@@ -163,7 +191,7 @@ If you want to stop vagrant Virtual machines
 vagrant halt
 ```
 
-If you want to stop vagrant Virtual machines
+If you want to stop and destroy vagrant Virtual machines
 
 ```bash
 vagrant destroy -f

@@ -13,7 +13,7 @@ Vagrant.configure("2") do |config|
     config.hostmanager.include_offline = true
 
     # Centos 6 vm
-    config.vm.define "centos6" do |centos6|
+    config.vm.define "centos6", autostart: false do |centos6|
         centos6.vm.box = "centos/6"
         centos6.vm.box_check_update = true
         centos6.vm.hostname = "centos6"
@@ -34,7 +34,7 @@ Vagrant.configure("2") do |config|
     end
 
     # Centos 7 vm
-    config.vm.define "centos7" do |centos7|
+    config.vm.define "centos7", primary: true do |centos7|
         centos7.vm.box = "centos/7"
         centos7.vm.box_check_update = true
         centos7.vm.hostname = "centos7"
@@ -52,7 +52,7 @@ Vagrant.configure("2") do |config|
     end
 
     # Ubuntu 18.04 (Bionic)
-    config.vm.define "ubuntu1804" do |ubuntu1804|
+    config.vm.define "ubuntu1804", autostart: false do |ubuntu1804|
         ubuntu1804.vm.box = "ubuntu/bionic64"
         ubuntu1804.vm.box_check_update = true
         ubuntu1804.vm.hostname = "ubuntu1804"
@@ -73,7 +73,7 @@ Vagrant.configure("2") do |config|
     end
 
     # Ubuntu 18.10 (Cosmic)
-    config.vm.define "ubuntu1810" do |ubuntu1810|
+    config.vm.define "ubuntu1810", autostart: false do |ubuntu1810|
         ubuntu1810.vm.box = "ubuntu/cosmic64"
         ubuntu1810.vm.box_check_update = true
         ubuntu1810.vm.hostname = "ubuntu1810"
@@ -91,6 +91,24 @@ Vagrant.configure("2") do |config|
 
         # Necessary for ansible
         ubuntu1810.vm.provision "shell", inline: "sudo apt-get -y install python"
+    end
+
+    # Amazon Linux 2 LTS
+    config.vm.define "amzn2", autostart: false do |amzn2|
+        amzn2.vm.box = "gbailey/amzn2"
+        amzn2.vm.box_check_update = true
+        amzn2.vm.hostname = "amzn2"
+        amzn2.vm.network "public_network", auto_config: true
+        amzn2.vm.provider "virtualbox" do |v|
+            v.name = "amzn2"
+            v.memory = "512"
+            v.cpus = 1
+        end
+        amzn2.hostmanager.ip_resolver = proc do |vm, resolving_vm|
+            if hostname = (vm.ssh_info && vm.ssh_info[:host])
+                `vagrant ssh amzn2 -c "hostname -I"`.split()[1]
+            end
+        end
     end
 
 end

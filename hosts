@@ -6,6 +6,10 @@ centos7
 ubuntu1804
 ubuntu1810
 
+[amzn]
+amzn2
+
 [linux:children]
 centos
 ubuntu
+amzn
