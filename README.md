@@ -119,12 +119,6 @@ pip install autopep8
 pip install ansible
 ```
 
-Activate Python virtualenv
-
-```bash
-source venv/bin/activate
-```
-
 As I mentioned before you have five VMs to play for (centos6, centos7, ubuntu1804, ubuntu1810 and amzn2), so
 you can startup altogether or only one, two or three if you prefer
 
