@@ -20,7 +20,7 @@ two Network Interfaces:
 * One in "bridge" mode to your favorite "Host Interface" (This is asked you when VM startup) and where [Ansible](https://www.ansible.com/) could work using ssh protocol
 
 Of course, feel free to used it and adapted it to your personal project!, Let me know if you have
-improvements using Pull Request or creating a new Issue
+improvements using [Pull Request](https://github.com/christiangda/ansible-playground/pulls) or creating a [new Issue](https://github.com/christiangda/ansible-playground/issues)
 
 ![](images/ansible-playground.png)
 
