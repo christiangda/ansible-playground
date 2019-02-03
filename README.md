@@ -183,6 +183,13 @@ vagrant ssh centos7
 vagrant ssh ubuntu1804
 # or
 vagrant ssh ubuntu1810
+# or
+vagrant ssh amzn2
+```
+
+If you want to know what servers you startup
+```bash
+vagrant status
 ```
 
 ## Stop Playing
