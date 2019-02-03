@@ -105,7 +105,7 @@ git clone https://github.com/christiangda/ansible-playground.git
 cd ansible-playground/
 ```
 
-The better way to **" isolate the blast radius " -> ;)** is using Python Virtual Environments, so create it
+The better way to **" isolate the blast radius " -> ;)** is using [Python Virtual Environments](https://docs.python.org/3/library/venv.html), so create it
 
 ```bash
 python3 -m venv venv
