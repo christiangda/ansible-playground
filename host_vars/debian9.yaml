@@ -1,0 +1,2 @@
+---
+ansible_ssh_private_key_file: .vagrant/machines/debian9/virtualbox/private_key

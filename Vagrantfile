@@ -93,6 +93,48 @@ Vagrant.configure("2") do |config|
         ubuntu1810.vm.provision "shell", inline: "sudo apt-get -y install python"
     end
 
+    # debian 8 (jessie)
+    config.vm.define "debian8", autostart: false do |debian8|
+        debian8.vm.box = "debian/jessie64"
+        debian8.vm.box_check_update = true
+        debian8.vm.hostname = "debian8"
+        debian8.vm.network "public_network", auto_config: true
+        debian8.vm.provider "virtualbox" do |v|
+            v.name = "debian8"
+            v.memory = "512"
+            v.cpus = 1
+        end
+        debian8.hostmanager.ip_resolver = proc do |vm, resolving_vm|
+            if hostname = (vm.ssh_info && vm.ssh_info[:host])
+                `vagrant ssh debian8 -c "hostname -I"`.split()[1]
+            end
+        end
+
+        # Necessary for ansible
+        debian8.vm.provision "shell", inline: "sudo apt-get -y install python"
+    end
+
+    # debian 9 (stretch)
+    config.vm.define "debian9", autostart: false do |debian9|
+        debian9.vm.box = "debian/stretch64"
+        debian9.vm.box_check_update = true
+        debian9.vm.hostname = "debian9"
+        debian9.vm.network "public_network", auto_config: true
+        debian9.vm.provider "virtualbox" do |v|
+            v.name = "debian9"
+            v.memory = "512"
+            v.cpus = 1
+        end
+        debian9.hostmanager.ip_resolver = proc do |vm, resolving_vm|
+            if hostname = (vm.ssh_info && vm.ssh_info[:host])
+                `vagrant ssh debian9 -c "hostname -I"`.split()[1]
+            end
+        end
+
+        # Necessary for ansible
+        debian9.vm.provision "shell", inline: "sudo apt-get -y install python"
+    end
+
     # Amazon Linux 2 LTS
     config.vm.define "amzn2", autostart: false do |amzn2|
         amzn2.vm.box = "gbailey/amzn2"

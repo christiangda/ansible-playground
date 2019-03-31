@@ -6,10 +6,15 @@ centos7
 ubuntu1804
 ubuntu1810
 
+[debian]
+debian8
+debian9
+
 [amzn]
 amzn2
 
 [linux:children]
 centos
 ubuntu
+debian
 amzn

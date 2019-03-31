@@ -11,6 +11,8 @@ This environment create five VMs (see [Vagrantfile](Vagrantfile)):
 * One Centos 7 (hostname centos7) **--> default when execute vagrant up**
 * One Ubuntu 18.04 (hostname ubuntu1804)
 * One Ubuntu 18.10 (hostname ubuntu1810)
+* One Debian 8 "Jessie" (hostname debian8)
+* One Debian 9 "Stretch" (hostname debian9)
 * One Amazon Linux 2 LTS (hostname amzn2)
 
 All the five VMs could be used together at the same time or in any combination, each one of this has
@@ -84,7 +86,7 @@ sudo usermod -a -G vboxusers $USER
 check always you are using the last version
 
 ```bash
-sudo dnf install -y https://releases.hashicorp.com/vagrant/2.2.3/vagrant_2.2.3_x86_64.rpm
+sudo dnf install -y https://releases.hashicorp.com/vagrant/2.2.4/vagrant_2.2.4_x86_64.rpm
 ```
 
 #### Vagrant plugins
@@ -131,7 +133,7 @@ vagrant up ubuntu1804
 If you want to play with two, one Ubuntu, one Centos
 
 ```bash
-vagrant up ubuntu1810 centos7
+vagrant up ubuntu1810 centos7 debian9
 ```
 
 To startup the five together, one by one (it take a long time ;), go for a coffee cup) and when you go back
@@ -185,6 +187,10 @@ vagrant ssh centos7
 vagrant ssh ubuntu1804
 # or
 vagrant ssh ubuntu1810
+# or
+vagrant ssh debian8
+# or
+vagrant ssh debian9
 # or
 vagrant ssh amzn2
 ```

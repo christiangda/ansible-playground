@@ -111,3 +111,9 @@ venv.bak/
 
 # Ansible retry file
 *.retry
+
+# Ansible roles
+roles/
+
+# Testing Playbook
+testing.yaml
