@@ -116,4 +116,7 @@ venv.bak/
 roles/
 
 # Testing Playbook
-testing.yaml
+testing*
+
+#
+files/
