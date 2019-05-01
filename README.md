@@ -9,6 +9,8 @@ This environment create five VMs (see [Vagrantfile](Vagrantfile)):
 
 * One Centos 6 (hostname centos6)
 * One Centos 7 (hostname centos7) **--> default when execute vagrant up**
+* One Ubuntu 14.04 (hostname ubuntu1404)
+* One Ubuntu 16.04 (hostname ubuntu1604)
 * One Ubuntu 18.04 (hostname ubuntu1804)
 * One Ubuntu 18.10 (hostname ubuntu1810)
 * One Debian 8 "Jessie" (hostname debian8)
@@ -180,17 +182,11 @@ ansible-playbook first-playbook.yaml --limit centos7,ubuntu1804
 Connect to your servers:
 
 ```bash
-vagrant ssh centos6
+vagrant ssh [centos6 | centos7]
 # or
-vagrant ssh centos7
+vagrant ssh [ubuntu1404 | ubuntu1604 | ubuntu1804 | ubuntu1810]
 # or
-vagrant ssh ubuntu1804
-# or
-vagrant ssh ubuntu1810
-# or
-vagrant ssh debian8
-# or
-vagrant ssh debian9
+vagrant ssh [debian8 | debian9]
 # or
 vagrant ssh amzn2
 ```

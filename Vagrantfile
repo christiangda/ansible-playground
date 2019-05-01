@@ -51,6 +51,45 @@ Vagrant.configure("2") do |config|
         end
     end
 
+    # Ubuntu 14.04 (Bionic)
+    config.vm.define "ubuntu1404", autostart: false do |ubuntu1404|
+        ubuntu1404.vm.box = "ubuntu/trusty64"
+        ubuntu1404.vm.box_check_update = true
+        ubuntu1404.vm.hostname = "ubuntu1404"
+        ubuntu1404.vm.network "public_network", auto_config: true
+        ubuntu1404.vm.provider "virtualbox" do |v|
+            v.name = "ubuntu1404"
+            v.memory = "512"
+            v.cpus = 1
+        end
+        ubuntu1404.hostmanager.ip_resolver = proc do |vm, resolving_vm|
+            if hostname = (vm.ssh_info && vm.ssh_info[:host])
+                `vagrant ssh ubuntu1404 -c "hostname -I"`.split()[1]
+            end
+        end
+    end
+
+    # Ubuntu 16.04 (Bionic)
+    config.vm.define "ubuntu1604", autostart: false do |ubuntu1604|
+        ubuntu1604.vm.box = "ubuntu/xenial64"
+        ubuntu1604.vm.box_check_update = true
+        ubuntu1604.vm.hostname = "ubuntu1604"
+        ubuntu1604.vm.network "public_network", auto_config: true
+        ubuntu1604.vm.provider "virtualbox" do |v|
+            v.name = "ubuntu1604"
+            v.memory = "512"
+            v.cpus = 1
+        end
+        ubuntu1604.hostmanager.ip_resolver = proc do |vm, resolving_vm|
+            if hostname = (vm.ssh_info && vm.ssh_info[:host])
+                `vagrant ssh ubuntu1604 -c "hostname -I"`.split()[1]
+            end
+        end
+
+        # Necessary for ansible
+        ubuntu1604.vm.provision "shell", inline: "sudo apt-get -y install python"
+    end
+
     # Ubuntu 18.04 (Bionic)
     config.vm.define "ubuntu1804", autostart: false do |ubuntu1804|
         ubuntu1804.vm.box = "ubuntu/bionic64"
