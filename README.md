@@ -8,13 +8,16 @@ to have where to play
 This environment create five VMs (see [Vagrantfile](Vagrantfile)):
 
 * One Centos 6 (hostname centos6)
-* One Centos 7 (hostname centos7) **--> default when execute vagrant up**
+* One Centos 7 (hostname centos7)
+* One Centos 8 (hostname centos8) **--> default when execute vagrant up**
 * One Ubuntu 14.04 (hostname ubuntu1404)
 * One Ubuntu 16.04 (hostname ubuntu1604)
 * One Ubuntu 18.04 (hostname ubuntu1804)
 * One Ubuntu 18.10 (hostname ubuntu1810)
+* One Ubuntu 19.04 (hostname ubuntu1904)
 * One Debian 8 "Jessie" (hostname debian8)
 * One Debian 9 "Stretch" (hostname debian9)
+* One Debian 10 "Buster" (hostname debian10)
 * One Amazon Linux 2 LTS (hostname amzn2)
 
 All the five VMs could be used together at the same time or in any combination, each one of this has
@@ -26,11 +29,9 @@ two Network Interfaces:
 Of course, feel free to used it and adapted it to your personal project!, Let me know if you have
 improvements using [Pull Request](https://github.com/christiangda/ansible-playground/pulls) or creating a [new Issue](https://github.com/christiangda/ansible-playground/issues)
 
-![](images/ansible-playground.png)
-
 ## My environment
 
-I'm using Linux [Fedora 29 Workstation](https://getfedora.org/workstation) with the latest updates
+I'm using Linux [Fedora 31 Workstation](https://getfedora.org/workstation) with the latest updates
 
 ## Install Requirements
 
@@ -88,7 +89,7 @@ sudo usermod -a -G vboxusers $USER
 check always you are using the last version
 
 ```bash
-sudo dnf install -y https://releases.hashicorp.com/vagrant/2.2.4/vagrant_2.2.4_x86_64.rpm
+sudo dnf install -y https://releases.hashicorp.com/vagrant/2.2.6/vagrant_2.2.6_x86_64.rpm
 ```
 
 #### Vagrant plugins
@@ -123,7 +124,7 @@ pip install autopep8
 pip install ansible
 ```
 
-As I mentioned before you have five VMs to play for (centos6, centos7, ubuntu1804, ubuntu1810 and amzn2), so
+As I mentioned before you have five VMs to play for (centos6, centos7, ubuntu1804, ubuntu1810, amzn2, etc), so
 you can startup altogether or only one, two or three if you prefer
 
 If you want to startup only one
@@ -135,7 +136,7 @@ vagrant up ubuntu1804
 If you want to play with two, one Ubuntu, one Centos
 
 ```bash
-vagrant up ubuntu1810 centos7 debian9
+vagrant up ubuntu1810 centos7 debian9 debian10
 ```
 
 To startup the five together, one by one (it take a long time ;), go for a coffee cup) and when you go back
@@ -143,7 +144,7 @@ your console maybe is asking for the network interface you want to use as a
 bridge for ansible machines
 
 ```bash
-vagrant up centos6 centos7 ubuntu1804 ubuntu1810 amzn2
+vagrant up centos6 centos7 centos8 ubuntu1804 ubuntu1810 amzn2
 ```
 
 Test if ansible is working fine
@@ -192,6 +193,7 @@ vagrant ssh amzn2
 ```
 
 If you want to know what servers you startup
+
 ```bash
 vagrant status
 ```
@@ -216,12 +218,12 @@ If you want to stop and destroy vagrant Virtual machines
 vagrant destroy -f
 ```
 
-# License
+## License
 
 This repository code is released under the GNU General Public License Version 3:
 
 * [http://www.gnu.org/licenses/gpl-3.0-standalone.html](http://www.gnu.org/licenses/gpl-3.0-standalone.html)
 
-# Author Information
+## Author Information
 
 * [Christian González](https://github.com/christiangda)

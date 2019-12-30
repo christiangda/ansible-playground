@@ -1,16 +1,19 @@
 [centos]
 centos6
 centos7
+centos8
 
 [ubuntu]
 ubuntu1404
 ubuntu1604
 ubuntu1804
 ubuntu1810
+ubuntu1904
 
 [debian]
 debian8
 debian9
+debian10
 
 [amzn]
 amzn2

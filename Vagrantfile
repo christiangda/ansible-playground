@@ -34,7 +34,7 @@ Vagrant.configure("2") do |config|
     end
 
     # Centos 7 vm
-    config.vm.define "centos7", primary: true do |centos7|
+    config.vm.define "centos7", autostart: false do |centos7|
         centos7.vm.box = "centos/7"
         centos7.vm.box_check_update = true
         centos7.vm.hostname = "centos7"
@@ -47,6 +47,24 @@ Vagrant.configure("2") do |config|
         centos7.hostmanager.ip_resolver = proc do |vm, resolving_vm|
             if hostname = (vm.ssh_info && vm.ssh_info[:host])
                 `vagrant ssh centos7 -c "hostname -I"`.split()[1]
+            end
+        end
+    end
+
+    # Centos 8 vm
+    config.vm.define "centos8", primary: true do |centos8|
+        centos8.vm.box = "centos/7"
+        centos8.vm.box_check_update = true
+        centos8.vm.hostname = "centos8"
+        centos8.vm.network "public_network", auto_config: true
+        centos8.vm.provider "virtualbox" do |v|
+            v.name = "centos8"
+            v.memory = "512"
+            v.cpus = 1
+        end
+        centos8.hostmanager.ip_resolver = proc do |vm, resolving_vm|
+            if hostname = (vm.ssh_info && vm.ssh_info[:host])
+                `vagrant ssh centos8 -c "hostname -I"`.split()[1]
             end
         end
     end
@@ -87,7 +105,7 @@ Vagrant.configure("2") do |config|
         end
 
         # Necessary for ansible
-        ubuntu1604.vm.provision "shell", inline: "sudo apt-get -y install python"
+        ubuntu1604.vm.provision "shell", inline: "sudo apt-get -y install python python-apt"
     end
 
     # Ubuntu 18.04 (Bionic)
@@ -108,7 +126,7 @@ Vagrant.configure("2") do |config|
         end
 
         # Necessary for ansible
-        ubuntu1804.vm.provision "shell", inline: "sudo apt-get -y install python"
+        ubuntu1804.vm.provision "shell", inline: "sudo apt-get -y install python python-apt"
     end
 
     # Ubuntu 18.10 (Cosmic)
@@ -129,9 +147,30 @@ Vagrant.configure("2") do |config|
         end
 
         # Necessary for ansible
-        ubuntu1810.vm.provision "shell", inline: "sudo apt-get -y install python"
+        ubuntu1810.vm.provision "shell", inline: "sudo apt-get -y install python python-apt"
     end
 
+    # Ubuntu 19.04 (Disco)
+    config.vm.define "ubuntu1904", autostart: false do |ubuntu1904|
+        ubuntu1904.vm.box = "ubuntu/disco64"
+        ubuntu1904.vm.box_check_update = true
+        ubuntu1904.vm.hostname = "ubuntu1904"
+        ubuntu1904.vm.network "public_network", auto_config: true
+        ubuntu1904.vm.provider "virtualbox" do |v|
+            v.name = "ubuntu1904"
+            v.memory = "512"
+            v.cpus = 1
+        end
+        ubuntu1904.hostmanager.ip_resolver = proc do |vm, resolving_vm|
+            if hostname = (vm.ssh_info && vm.ssh_info[:host])
+                `vagrant ssh ubuntu1904 -c "hostname -I"`.split()[1]
+            end
+        end
+
+        # Necessary for ansible
+        ubuntu1904.vm.provision "shell", inline: "sudo apt-get -y install python python-apt"
+    end
+    
     # debian 8 (jessie)
     config.vm.define "debian8", autostart: false do |debian8|
         debian8.vm.box = "debian/jessie64"
@@ -150,7 +189,7 @@ Vagrant.configure("2") do |config|
         end
 
         # Necessary for ansible
-        debian8.vm.provision "shell", inline: "sudo apt-get -y install python"
+        debian8.vm.provision "shell", inline: "sudo apt-get -y install python python-apt"
     end
 
     # debian 9 (stretch)
@@ -171,7 +210,28 @@ Vagrant.configure("2") do |config|
         end
 
         # Necessary for ansible
-        debian9.vm.provision "shell", inline: "sudo apt-get -y install python"
+        debian9.vm.provision "shell", inline: "sudo apt-get -y install python python-apt"
+    end
+
+    # debian 10 (buster)
+    config.vm.define "debian10", autostart: false do |debian10|
+        debian10.vm.box = "debian/buster64"
+        debian10.vm.box_check_update = true
+        debian10.vm.hostname = "debian10"
+        debian10.vm.network "public_network", auto_config: true
+        debian10.vm.provider "virtualbox" do |v|
+            v.name = "debian10"
+            v.memory = "512"
+            v.cpus = 1
+        end
+        debian10.hostmanager.ip_resolver = proc do |vm, resolving_vm|
+            if hostname = (vm.ssh_info && vm.ssh_info[:host])
+                `vagrant ssh debian10 -c "hostname -I"`.split()[1]
+            end
+        end
+
+        # Necessary for ansible
+        debian10.vm.provision "shell", inline: "sudo apt-get -y install python python-apt"
     end
 
     # Amazon Linux 2 LTS
