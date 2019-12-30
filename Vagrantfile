@@ -53,7 +53,7 @@ Vagrant.configure("2") do |config|
 
     # Centos 8 vm
     config.vm.define "centos8", primary: true do |centos8|
-        centos8.vm.box = "centos/7"
+        centos8.vm.box = "centos/8"
         centos8.vm.box_check_update = true
         centos8.vm.hostname = "centos8"
         centos8.vm.network "public_network", auto_config: true
